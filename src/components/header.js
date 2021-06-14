@@ -27,10 +27,16 @@ function Header({ title, data, filteredMovies }) {
         console.log('filter', moviesFiltered);
         filteredMovies(moviesFiltered);
     }
+    const handleBack = () => {
+        console.log('back');
+        setSearchClick(false);
+        setSearchData('');
+        filteredMovies(data);
+    }
     return (
         <div className="block-container-image">
             <div className="block-container-image-1">
-                <img className="image-back" src="images/Back.png" alt="Back.png" />
+                <img className="image-back" src="images/Back.png" alt="Back.png" onClick={handleBack} />
                 {searchClick ? (<div className="image-search-input">
                     <input type="text" value={searchData} onChange={e => handleChange(e)} />
                     <span className="close-icon" onClick={handleClose}>X</span>
@@ -41,12 +47,12 @@ function Header({ title, data, filteredMovies }) {
     )
 }
 
-const mapState = (state) => {
-    console.log('state-1', state);
-    return {
-        filteredMovies: state.MovieListReducer.filteredMovies
-    }
-}
+// const mapState = (state) => {
+//     console.log('state-1', state);
+//     return {
+//         filteredMovies: state.MovieListReducer.filteredMovies
+//     }
+// }
 
 const mapDispatch = (dispatch) => {
     return {
@@ -59,4 +65,4 @@ const mapDispatch = (dispatch) => {
 }
 
 
-export default connect(mapState, mapDispatch)(Header);
+export default connect(null, mapDispatch)(Header);
