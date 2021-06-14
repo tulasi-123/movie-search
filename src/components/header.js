@@ -23,7 +23,7 @@ function Header({ title, data, filteredMovies }) {
         console.log('change', e.target.value, data);
         setSearchData(e.target.value);
         // props.onSearch(e.target.value);
-        const moviesFiltered = data.filter((item) => item.name.toLowerCase().indexOf(e.target.value) !== -1);
+        const moviesFiltered = data.filter((item) => item.name.toLowerCase().indexOf(e.target.value).toLowerCase() !== -1);
         console.log('filter', moviesFiltered);
         filteredMovies(moviesFiltered);
     }
